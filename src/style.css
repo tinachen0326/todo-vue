@@ -1,0 +1,100 @@
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind utilities;
+
+/* 自訂的基礎樣式 */
+@layer base {
+  /* 設定基本字體 */
+  :root {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+      sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 移除預設的 body margin */
+  body {
+    margin: 0;
+  }
+
+  /* 確保 app 佔滿整個視窗 */
+  #app {
+    min-height: 100vh;
+  }
+}
+
+/* 自訂組件樣式 */
+@layer components {
+  /* 可重複使用的按鈕樣式 */
+  .btn-primary {
+    @apply bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-200;
+  }
+}
+
+/* 自訂工具類別 */
+@layer utilities {
+  /* 動畫相關 */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  .fade-enter-from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .fade-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  /* 優先級邊框顏色 */
+  .priority-high {
+    @apply border-l-4 border-red-500;
+  }
+
+  .priority-medium {
+    @apply border-l-4 border-yellow-500;
+  }
+
+  .priority-low {
+    @apply border-l-4 border-green-500;
+  }
+
+  /* 完成任務的樣式 */
+  .task-completed {
+    @apply line-through opacity-60;
+  }
+}
+
+/* 捲軸樣式（選用） */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
