@@ -4,6 +4,9 @@
 這是一個使用 Vue 3 + Vite + Tailwind CSS 開發的 Todo List 任務清單網站，使用者可以新增、編輯、完成、刪除任務，方便管理日常工作或學習計畫。
 此專案主要作為前端開發練習，展示 Vue 3 Composition API、Tailwind CSS 樣式設計、以及現代化前端開發流程的實作能力。
 
+## 網址
+https://todo-vue-practice.vercel.app/
+
 ## 核心功能
 - 任務管理 - 新增、編輯、刪除、標記完成
 - 優先級設定 - 高、中、低三種優先級
