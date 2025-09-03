@@ -37,12 +37,20 @@
               'cursor-pointer',
               todo.completed && 'line-through opacity-60',
             ]"
-          >
-            {{ todo.text }}
-          </p>
-          <p class="text-xs text-gray-500 mt-1">
-            {{ formatDate(todo.createdAt) }}
-          </p>
+            v-html="highlightedText"
+          ></p>
+          <div class="flex items-center gap-2 mt-1">
+            <!-- 優先級標籤 -->
+            <span
+              :class="['text-xs px-2 py-0.5 rounded-full', priorityBadgeClass]"
+            >
+              {{ priorityLabel }}
+            </span>
+            <!-- 時間 -->
+            <span class="text-xs text-gray-500">
+              {{ formatDate(todo.createdAt) }}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -73,6 +81,10 @@ import { ref, computed, nextTick } from "vue";
 // 定義 props
 const props = defineProps({
   todo: Object,
+  searchQuery: {
+    type: String,
+    default: "",
+  },
 });
 
 // 定義事件
@@ -93,7 +105,40 @@ const priorityClass = computed(() => {
   return classes[props.todo.priority];
 });
 
-// 方法 - 切換完成狀態
+// 優先級標籤樣式
+const priorityBadgeClass = computed(() => {
+  const classes = {
+    high: "bg-red-100 text-red-600",
+    medium: "bg-yellow-100 text-yellow-600",
+    low: "bg-green-100 text-green-600",
+  };
+  return classes[props.todo.priority];
+});
+
+// 優先級標籤文字
+const priorityLabel = computed(() => {
+  const labels = {
+    high: "高優先",
+    medium: "中優先",
+    low: "低優先",
+  };
+  return labels[props.todo.priority];
+});
+
+// 搜尋高亮文字
+const highlightedText = computed(() => {
+  if (!props.searchQuery) {
+    return props.todo.text;
+  }
+
+  const regex = new RegExp(`(${props.searchQuery})`, "gi");
+  return props.todo.text.replace(
+    regex,
+    '<mark class="bg-yellow-200">$1</mark>'
+  );
+});
+
+// 其他方法保持不變...
 const toggleComplete = () => {
   emit("update", {
     ...props.todo,
@@ -101,7 +146,6 @@ const toggleComplete = () => {
   });
 };
 
-// 方法 - 開始編輯
 const startEdit = async () => {
   isEditing.value = true;
   editText.value = props.todo.text;
@@ -109,7 +153,6 @@ const startEdit = async () => {
   editInput.value?.focus();
 };
 
-// 方法 - 儲存編輯
 const saveEdit = () => {
   if (editText.value.trim() && editText.value !== props.todo.text) {
     emit("update", {
@@ -120,20 +163,17 @@ const saveEdit = () => {
   cancelEdit();
 };
 
-// 方法 - 取消編輯
 const cancelEdit = () => {
   isEditing.value = false;
   editText.value = "";
 };
 
-// 方法 - 刪除任務
 const deleteTodo = () => {
   if (confirm("確定要刪除這個任務嗎？")) {
     emit("delete", props.todo.id);
   }
 };
 
-// 方法 - 格式化日期
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const today = new Date();
