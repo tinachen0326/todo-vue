@@ -23,7 +23,7 @@
 
 ## 專案架構
 ```
-todo-list/
+todo-vue-practice/
 ├── src/
 │   ├── components/         # Vue 組件
 │   │   ├── TodoHeader.vue  # 標題與統計顯示
