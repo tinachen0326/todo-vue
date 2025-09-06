@@ -7,7 +7,7 @@
 ## 網址
 https://todo-vue-practice.vercel.app/
 
-## 核心功能
+## 核心價值
 - 任務管理 - 新增、編輯、刪除、標記完成
 - 優先級設定 - 高、中、低三種優先級
 - 搜尋功能 - 即時搜尋任務內容
@@ -15,7 +15,7 @@ https://todo-vue-practice.vercel.app/
 - 資料持久化 - localStorage 本地儲存
 - 即時統計 - 顯示任務完成狀態
 
-## 使用技術
+## 技術架構
 - 前端框架：Vue 3 (Composition API)
 - 建構工具：Vite
 - CSS 框架：Tailwind CSS
@@ -24,7 +24,7 @@ https://todo-vue-practice.vercel.app/
 - 版本控制：Git
 - 部署平台: Vercel
 
-## 專案架構
+## 專案結構
 ```
 todo-vue-practice/
 ├── src/
