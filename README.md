@@ -63,4 +63,5 @@ todo-vue-practice/
 - 使用者認證系統
 
 ## 版權聲明
-此專案僅供個人學習與參考使用，無授權任何商業用途。 
+本專案採用 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-Hant) 授權條款。  
+此專案僅供個人學習與參考使用，無授權任何商業用途。  
