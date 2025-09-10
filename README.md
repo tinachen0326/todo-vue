@@ -26,7 +26,7 @@ https://todo-vue-practice.vercel.app/
 
 ## 專案結構
 ```
-todo-vue-practice/
+todo-vue/
 ├── src/
 │   ├── components/         # Vue 組件
 │   │   ├── TodoHeader.vue  # 標題與統計顯示
